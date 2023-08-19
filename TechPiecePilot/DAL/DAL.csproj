@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A5D5793-B7BE-4D9B-A78E-E18C9648CD77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.32.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.32.1\lib\net45\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.32.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.32.1\lib\net45\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.32.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.32.1\lib\net45\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.32.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.32.1\lib\net45\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.32.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.32.1\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccessLayer.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IRepos.cs" />
+    <Compile Include="Migrations\202308152155256_initDB.cs" />
+    <Compile Include="Migrations\202308152155256_initDB.designer.cs">
+      <DependentUpon>202308152155256_initDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308161714275_models.cs" />
+    <Compile Include="Migrations\202308161714275_models.designer.cs">
+      <DependentUpon>202308161714275_models.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308161748160_UModels.cs" />
+    <Compile Include="Migrations\202308161748160_UModels.designer.cs">
+      <DependentUpon>202308161748160_UModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308170823433_PModel.cs" />
+    <Compile Include="Migrations\202308170823433_PModel.designer.cs">
+      <DependentUpon>202308170823433_PModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308171809223_Drop3Tables.cs" />
+    <Compile Include="Migrations\202308171809223_Drop3Tables.designer.cs">
+      <DependentUpon>202308171809223_Drop3Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308181654022_Token.cs" />
+    <Compile Include="Migrations\202308181654022_Token.designer.cs">
+      <DependentUpon>202308181654022_Token.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308182101033_cart.cs" />
+    <Compile Include="Migrations\202308182101033_cart.designer.cs">
+      <DependentUpon>202308182101033_cart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308182206405_tokenupdate.cs" />
+    <Compile Include="Migrations\202308182206405_tokenupdate.designer.cs">
+      <DependentUpon>202308182206405_tokenupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\FeedbackModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ReqProductModel.cs" />
+    <Compile Include="Models\ReviewsModel.cs" />
+    <Compile Include="Models\TokenModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WishlistModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\AdminRepos\ProductRepo.cs" />
+    <Compile Include="Repos\Auth.cs" />
+    <Compile Include="Repos\CustomerRepos\CartRepo.cs" />
+    <Compile Include="Repos\CustomerRepos\WishlistRepo.cs" />
+    <Compile Include="Repos\Repos.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
+    <Compile Include="TCPPContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202308152155256_initDB.resx">
+      <DependentUpon>202308152155256_initDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308161714275_models.resx">
+      <DependentUpon>202308161714275_models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308161748160_UModels.resx">
+      <DependentUpon>202308161748160_UModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308170823433_PModel.resx">
+      <DependentUpon>202308170823433_PModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308171809223_Drop3Tables.resx">
+      <DependentUpon>202308171809223_Drop3Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308181654022_Token.resx">
+      <DependentUpon>202308181654022_Token.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308182101033_cart.resx">
+      <DependentUpon>202308182101033_cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308182206405_tokenupdate.resx">
+      <DependentUpon>202308182206405_tokenupdate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
