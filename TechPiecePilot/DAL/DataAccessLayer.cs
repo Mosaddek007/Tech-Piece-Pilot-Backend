@@ -17,9 +17,9 @@ namespace DAL
         { 
             return new ProductRepo();
         }
-        public static IRepos<UserModel, int, UserModel> N_UserData()
+        public static IRepos<Customer, string, Customer> CustomerData()
         {
-            return new UserRepo();
+            return new CustomerRepo();
         }
         public static IRepos<WishlistModel, int, WishlistModel> WishlistData()
         {
@@ -32,10 +32,18 @@ namespace DAL
         }
 
 
-        public static IAuth<UserModel> Auth()
+        public static IAuth<bool> AuthData()
         {
-            return new Auth();
+            return new UserRepo();
         }
 
+        public static IRepos<Token, string, Token> TokenData()
+        {
+            return new TokenRepo();
+        }
+        public static IRepos<User, string, User> UserData()
+        {
+            return new UserRepo();
+        }
     }
 }

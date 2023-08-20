@@ -28,10 +28,10 @@ namespace DAL.Models
 
         //ForeignKey From UserModel
         [ForeignKey("User")]
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
 
         public virtual CartModel Cart { get; set; }
-        public virtual UserModel User { get; set; }
+        public virtual Customer User { get; set; }
 
 
     }

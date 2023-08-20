@@ -14,7 +14,7 @@ namespace BLL.Services.CustomerServices
         public static CartDTO CreateCart(CartDTO obj)
         {
             var allcart = GetCarts();
-            var exsistingcart = allcart.Where(e => e.CustomerID == obj.CustomerID && e.ProductID == obj.ProductID).SingleOrDefault();
+            var exsistingcart = allcart.Where(e => e.Username == obj.Username && e.ProductID == obj.ProductID).SingleOrDefault();
             if (exsistingcart != null)
             {
                 obj.CartID = exsistingcart.CartID;
@@ -30,7 +30,7 @@ namespace BLL.Services.CustomerServices
                 {
                     Status = "Pending",
                     ProductID = obj.ProductID,
-                    CustomerID = obj.CustomerID,
+                    Username = obj.Username,
                     Quantity = obj.Quantity,
                     Price = obj.Price
 
@@ -62,7 +62,7 @@ namespace BLL.Services.CustomerServices
                 CartID = obj.CartID,
                 Status = obj.Status,
                 ProductID = obj.ProductID,
-                CustomerID = obj.CustomerID,
+                Username = obj.Username,
                 Quantity = obj.Quantity,
                 Price = obj.Price
 
@@ -92,7 +92,7 @@ namespace BLL.Services.CustomerServices
                     CartID = item.CartID,
                     Status = item.Status,
                     ProductID = item.ProductID,
-                    CustomerID = item.CustomerID,
+                    Username = item.Username,
                     Quantity = item.Quantity,
                     Price = item.Price
                 };

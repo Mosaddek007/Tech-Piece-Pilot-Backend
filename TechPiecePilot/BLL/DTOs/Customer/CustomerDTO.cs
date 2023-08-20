@@ -11,28 +11,23 @@ namespace BLL.DTOs.Customer
     {
         [Required]
         public string Username { get; set; }
-
+        [Required]
+        [StringLength(100)]
+        public string Name { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Gender { get; set; }
+        [Required]
+        public DateTime Dob { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Email { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Phone { get; set; }
+        [Required]
+        public string Address { get; set; }
         [Required]
         public string Password { get; set; }
-        [Required]
-        public string Role { get; set; }
-
-        [Required]
-        public string Firstname { get; set; }
-
-        [Required]
-        public string Lastname { get; set; }
-
-        [Required]
-        public DateTime DOB { get; set; }
-
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        public int Phone { get; set; }
-
-        [Required]
-        public string Gender { get; set; }
     }
 }

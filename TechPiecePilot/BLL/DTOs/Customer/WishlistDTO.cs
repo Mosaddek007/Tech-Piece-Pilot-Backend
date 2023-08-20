@@ -9,7 +9,7 @@ namespace BLL.DTOs.Customer
     public class WishlistDTO
     {
         public int WishID { get; set; }
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
         //ForeignKey From ProductModel Autofill ..No Need To Put Required
         public int ProductID { get; set; }
         

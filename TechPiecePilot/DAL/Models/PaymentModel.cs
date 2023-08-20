@@ -24,8 +24,8 @@ namespace DAL.Models
         public int InvoiceID { get; set; }
 
         [ForeignKey("User")]
-        public int CustomerID { get; set; }
-        public virtual UserModel User { get; set; }
+        public string Username { get; set; }
+        public virtual Customer User { get; set; }
         public virtual CartModel Cart { get; set; }
     }
 

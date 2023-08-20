@@ -18,7 +18,7 @@ namespace DAL.Repos.CustomerRepos
                 if (db.SaveChanges() > 0) return obj;
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

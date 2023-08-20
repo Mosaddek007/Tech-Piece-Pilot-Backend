@@ -19,7 +19,7 @@ namespace BLL.DTOs.Customer
 
         //ForeignKey From UserModel
         //[ForeignKey("User")]
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
 
         //By Default 1 ashbe
         public int Quantity { get; set; }

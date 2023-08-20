@@ -8,68 +8,46 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class UserRepo : Repos, IRepos<UserModel, int, UserModel>
+    internal class UserRepo : Repos, IRepos<User, string, User>, IAuth<bool>
     {
-        public UserModel Create(UserModel obj)
+        public bool Authenticate(string username, string password)
         {
-            try
-            {
-                db.UserModels.Add(obj);
-                if (db.SaveChanges() > 0) return obj;
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            var data = db.Users.FirstOrDefault(u => u.Username.Equals(username) &&
+            u.Password.Equals(password));
+            if (data != null) return true;
+            return false;
         }
 
-        public bool Delete(int id)
+        public User Create(User obj)
+        {
+            db.Users.Add(obj);
+            if (db.SaveChanges() > 0) return obj;
+            else return null;
+        }
+
+        public bool Delete(string id)
         {
             var ex = Read(id);
-            if (ex != null)
-            {
-                db.UserModels.Remove(ex);
-                if (db.SaveChanges() > 0) return true;
-                return false;
-            }
-            return false;
-
+            db.Users.Remove(ex);
+            return db.SaveChanges() > 0;
         }
 
-        public List<UserModel> Read()
+        public List<User> Read()
         {
-            return db.UserModels.ToList();
+            return db.Users.ToList();
         }
 
-        public UserModel Read(int id)
+        public User Read(string id)
         {
-            return db.UserModels.Find(id);
+            return db.Users.Find(id);
         }
 
-        public UserModel Update(UserModel obj)
+        public User Update(User obj)
         {
-            try 
-            {
-                var ex = Read(obj.UserID);
-                if (ex != null)
-                {
-
-                    db.Entry(ex).CurrentValues.SetValues(obj);
-                    if (db.SaveChanges() > 0)
-                    {
-                        return obj;
-                    }
-
-                    return null;
-                }
-
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            var ex = Read(obj.Username);
+            db.Entry(ex).CurrentValues.SetValues(obj);
+            if (db.SaveChanges() > 0) return obj;
+            else return null;
         }
     }
 }

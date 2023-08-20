@@ -8,16 +8,11 @@ namespace BLL.DTOs
 {
     public class TokenDTO
     {
-    
-        public int TokenID { get; set; }
-        public string TokenKey { get; set; }
 
+        public string TKey { get; set; }
         public DateTime CreatedAt { get; set; }
-
         public DateTime? Expired { get; set; }
-
         public string Username { get; set; }
-
-        public string Role { get; set; }
+        public string UserType { get; set; }
     }
 }

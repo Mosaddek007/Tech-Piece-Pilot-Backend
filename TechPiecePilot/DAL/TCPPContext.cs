@@ -19,10 +19,15 @@ namespace DAL
         public DbSet<ProductModel> Products { get; set; }
         public DbSet<ReqProductModel> ReqProductModels { get; set; }
         //public DbSet<ReviewsModel> ReviewsModels { get; set; }
-        public DbSet<UserModel> UserModels { get; set; }
+        //public DbSet<UserModel> UserModels { get; set; }
         public DbSet<WishlistModel> WishlistModels { get; set; }
         //public DbSet<HistoryModel> HistoryModels { get; set; }
-        public DbSet<TokenModel> TokenModels { get; set; }
+        public DbSet<Token> Tokens { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+          
 
     }
 

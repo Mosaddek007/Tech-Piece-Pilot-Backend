@@ -16,12 +16,12 @@ namespace DAL.Models
 
         //ForeignKey From UserModel
         [ForeignKey("User")]
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
 
         //shuld be nullable from customer...and will be updated from admin thanking the customer
         public string ReplyFromAdmin { get; set; }
 
-        public virtual UserModel User { get; set; }
+        public virtual Customer User { get; set; }
 
     }
 

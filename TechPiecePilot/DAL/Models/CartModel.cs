@@ -22,14 +22,14 @@ namespace DAL.Models
 
         //ForeignKey From UserModel
         [ForeignKey("User")]
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
 
         //By Default 1 ashbe
         public int Quantity { get; set; }
 
         public int Price { get; set; }
         public virtual ProductModel Product { get; set; }
-        public virtual UserModel User { get; set; }
+        public virtual Customer User { get; set; }
     }
 
 }

@@ -9,6 +9,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+using RouteAttribute = System.Web.Http.RouteAttribute;
 
 namespace TechPiecePilot.Controllers
 {
@@ -35,14 +39,14 @@ namespace TechPiecePilot.Controllers
         [Route("api/Admins/AllProducts")]
         public HttpResponseMessage AllProducts()
         {
-           // try
+            // try
             //{
-                var data = ProductServices.GetProduct();
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-           // }
+            var data = ProductServices.GetProduct();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+            // }
             // (Exception ex)
             //
-             //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
             //}
         }
 
@@ -79,19 +83,14 @@ namespace TechPiecePilot.Controllers
         [Route("api/Admins/UpdateProduct")]
         public HttpResponseMessage UpdateProduct(ProductDTO obj)
         {
-            // try
-            //{
+
             var data = ProductServices.UpdateProduct(obj);
             return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
+
         }
 
 
-        // Admin can POST ADDUsers
+        /*// Admin can POST ADDUsers
         [HttpPost]
         [Route("api/Admins/AddUsers")]
         public HttpResponseMessage create(UserDTO obj)
@@ -162,20 +161,7 @@ namespace TechPiecePilot.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             return HttpNotFound();
-        }
-        //auth
-   
-        [HttpGet]
-        [Route("api/user/login/{username}/{password}")]
-        public HttpResponseMessage getAuthdata(string username,string password)
-        {
-            var data = Auth.Auth.getAuth(username, password);
-            if (data != null)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, data);
-            }
-            return HttpNotFound();
-        }
+        }*/
 
         private HttpResponseMessage HttpNotFound()
         {

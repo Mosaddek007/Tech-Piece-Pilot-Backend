@@ -15,12 +15,12 @@ namespace DAL.Models
 
         //ForeignKey From UserModel  Autofill ..No Need To Put Required
         [ForeignKey("User")]
-        public int CustomerID { get; set; }
+        public string Username { get; set; }
 
         //ForeignKey From ProductModel Autofill ..No Need To Put Required
         [ForeignKey("Product")]
         public int ProductID { get; set; }
-        public virtual UserModel User { get; set; }
+        public virtual Customer User { get; set; }
         public virtual ProductModel Product { get; set; }
 
     }

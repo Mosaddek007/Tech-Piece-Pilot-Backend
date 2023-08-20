@@ -1,4 +1,5 @@
 ﻿using BLL.DTOs.Customer;
+using BLL.Services;
 using BLL.Services.CustomerServices;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,97 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using TechPiecePilot.Authenticate;
 
 namespace TechPiecePilot.Controllers
 {
     [EnableCors("*", "*", "*")]
     public class CustomerController : ApiController
     {
+        //GET all Customers
+        [HttpGet]
+        [Route("api/customers")]
+        public HttpResponseMessage Customers()
+        {
+            try
+            {
+                var data = CustomerService.Get();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
+
+        //Add Customer
+        [HttpPost]
+        [Route("api/customers/add")]
+        public HttpResponseMessage CustomersAdd(CustomerDTO customer)
+        {
+            try
+            {
+                var data = CustomerService.Insert(customer);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
+        [Logged]
+        [HttpGet]
+        [Route("api/customers/{username}")]
+        public HttpResponseMessage Customers(string username)
+        {
+            try
+            {
+                var data = CustomerService.Get(username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
+
+        //Update Customer
+        [HttpPost]
+        [Route("api/customers/{username}/update")]
+        public HttpResponseMessage CustomersUpdate(CustomerDTO username)
+        {
+            try
+            {
+                var data = CustomerService.Update(username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+        //Delete Customer
+        [HttpPost]
+        [Route("api/customers/{username}/delete")]
+        public HttpResponseMessage CustomersDelete(string username)
+        {
+            try
+            {
+                var data = CustomerService.Delete(username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
+
+
+
         // Customer can POST AddToCart
         [HttpPost]
         [Route("api/Customer/AddToCart")]

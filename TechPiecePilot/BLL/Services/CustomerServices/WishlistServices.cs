@@ -20,7 +20,7 @@ namespace BLL.Services.CustomerServices
                 var data1 = new WishlistDTO()
                 {
                     WishID = item.WishID,
-                    CustomerID = item.CustomerID,
+                    Username = item.Username,
                     ProductID = item.ProductID
 
                 };
@@ -35,7 +35,7 @@ namespace BLL.Services.CustomerServices
         {
             var data1 = new WishlistModel()
             {
-                CustomerID = obj.CustomerID,
+                Username = obj.Username,
                 ProductID = obj.ProductID
             };
             var data = DAL.DataAccessLayer.WishlistData().Create(data1);

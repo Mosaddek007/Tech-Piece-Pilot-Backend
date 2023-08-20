@@ -22,9 +22,9 @@ namespace DAL.Models
 
         //ForeignKey From UserModel
         [ForeignKey("User")]
-        public int CutomerID { get; set; }
+        public string Username { get; set; }
 
-        public virtual UserModel User { get; set; }
+        public virtual Customer User { get; set; }
         public virtual CategoryModel Category { get; set; }
     }
 
