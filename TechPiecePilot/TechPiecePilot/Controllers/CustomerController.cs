@@ -96,9 +96,6 @@ namespace TechPiecePilot.Controllers
             }
         }
 
-
-
-
         // Customer can POST AddToCart
         [HttpPost]
         [Route("api/Customer/AddToCart")]
@@ -162,9 +159,61 @@ namespace TechPiecePilot.Controllers
             return HttpNotFound();
         }
 
+        //Customer can  AddFeedBack
+        [HttpPost]
+        [Route("api/customers/{username}/AddFeedback")]
+        public HttpResponseMessage AddFeedback(FeedbackDTO feedback, string username)
+        {
+            try
+            {
+                var data = FeedbackService.Insert(feedback, username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+        //Customer can  GetFeedBack by Username
+        [HttpGet]
+        [Route("api/customers/{username}/feedbacks")]
+        public HttpResponseMessage CustomerFeedback(string username)
+        {
+            try
+            {
+                var data = CustomerService.CustomerFeedbacks(username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
+
+
+
+
+        //Customer can  Delete FeedBack by Username
+        [HttpPost]
+        [Route("api/customers/{username}/feedback/delete")]
+        public HttpResponseMessage CustomersfeedbackDelete(string username)
+        {
+            try
+            { 
+                var data = CustomerService.FeedbackDelete(username);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
+        }
+
         private HttpResponseMessage HttpNotFound()
         {
             throw new NotImplementedException();
         }
+
     }
 }

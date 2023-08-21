@@ -1,7 +1,9 @@
 ﻿using BLL.AdminServices.Services;
 using BLL.DTOs;
 using BLL.DTOs.AdminDTOs;
+using BLL.DTOs.Customer;
 using BLL.Services;
+using BLL.Services.CustomerServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +11,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
-using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
-using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
-using RouteAttribute = System.Web.Http.RouteAttribute;
 
 namespace TechPiecePilot.Controllers
 {
@@ -24,30 +22,31 @@ namespace TechPiecePilot.Controllers
         [Route("api/Admins/ADDProducts")]
         public HttpResponseMessage create(ProductDTO obj)
         {
-            // try
-            //{
+            try
+            {
             var data = ProductServices.CreateProduct(obj);
             return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
+            }
+            catch (Exception ex)
+            { 
+            return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
         }
         // Admin can GET AllProducts
         [HttpGet]
         [Route("api/Admins/AllProducts")]
         public HttpResponseMessage AllProducts()
         {
-            // try
-            //{
+            try
+            {
             var data = ProductServices.GetProduct();
             return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
+            }
+            catch (Exception ex)
+            { 
+            
+             return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }
         }
 
         // Admin can GET Product By ID
@@ -83,85 +82,31 @@ namespace TechPiecePilot.Controllers
         [Route("api/Admins/UpdateProduct")]
         public HttpResponseMessage UpdateProduct(ProductDTO obj)
         {
-
+            try
+            {
             var data = ProductServices.UpdateProduct(obj);
             return Request.CreateResponse(HttpStatusCode.OK, data);
-
-        }
-
-
-        /*// Admin can POST ADDUsers
-        [HttpPost]
-        [Route("api/Admins/AddUsers")]
-        public HttpResponseMessage create(UserDTO obj)
-        {
-            // try
-            //{
-            var data = UserServices.CreateUser(obj);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
-        }
-
-        // Admin can GET AllUsers
-        
-        [HttpGet]
-        [Route("api/Admins/AllUsers")]
-        public HttpResponseMessage AllUsers()
-        {
-            // try
-            //{
-            var data = UserServices.GetUsers();
-            return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
-        }
-
-        // Admin can GET Users By ID
-        [HttpGet]
-        [Route("api/Admins/{id}")]
-        public HttpResponseMessage GetUsersById(int id)
-        {
-            var data = UserServices.GetUserByID(id);
-            if (data != null)
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, data);
             }
-            return HttpNotFound();
-        }
-        // UpdateUser
-        [HttpPost]
-        [Route("api/user/update")]
-        public HttpResponseMessage userUpdate(UserDTO obj)
-        {
-            // try
-            //{
-            var data = UserServices.UpdateUSer(obj);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
-            // }
-            // (Exception ex)
-            //
-            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
-            //}
-        }
-        // Delete User
-        [HttpGet]
-        [Route("api/Admins/DeleteUser/{id}")]
-        public HttpResponseMessage DeleteUserId(int id)
-        {
-            var data = UserServices.DeleteUser(id);
-            if (data != null)
+            catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, data);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
             }
-            return HttpNotFound();
-        }*/
+        }
+        //admin can Update Feedback on ReplyFromAdmin       
+        [HttpPost]
+        [Route("api/Admins/{Username}/UpdateFeedbacks")]
+        public HttpResponseMessage UpdateFeedback(FeedbackDTO username)
+        {
+            try
+            {
+            var data = FeedbackService.Update(username);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex) 
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            }        
+        }
 
         private HttpResponseMessage HttpNotFound()
         {

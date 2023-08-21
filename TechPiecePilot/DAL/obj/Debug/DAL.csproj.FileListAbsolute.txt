@@ -12,3 +12,4 @@ D:\Final Project\TechPiecePilot\DAL\obj\Debug\DAL.dll
 D:\Final Project\TechPiecePilot\DAL\obj\Debug\DAL.pdb
 D:\Final Project\TechPiecePilot\DAL\obj\Debug\DAL.Migrations.newdb2.resources
 D:\Final Project\TechPiecePilot\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+D:\Final Project\TechPiecePilot\DAL\obj\Debug\DAL.Migrations.relationship.resources

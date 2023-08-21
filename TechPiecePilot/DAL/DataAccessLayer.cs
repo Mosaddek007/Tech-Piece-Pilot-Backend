@@ -45,5 +45,10 @@ namespace DAL
         {
             return new UserRepo();
         }
+
+        public static IRepos<FeedbackModel, int, FeedbackModel> FeedbackData()
+        {
+            return new FeedbackRepo();
+        }
     }
 }

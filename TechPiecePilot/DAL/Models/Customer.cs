@@ -30,6 +30,12 @@ namespace DAL.Models
             public string Address { get; set; }
             [Required]
             public string Password { get; set; }
+            public virtual ICollection<FeedbackModel> Feedbacks { get; set; }
+        public Customer()
+        {
+            Feedbacks = new List<FeedbackModel>();  
+        }
+
 
         }
     }

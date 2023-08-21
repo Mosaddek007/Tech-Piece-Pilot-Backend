@@ -13,6 +13,12 @@ namespace DAL.Models
         public int CategoryID { get; set; }
         [Required]
         public string CatName { get; set; }
+
+        public virtual ICollection<ProductModel> Products { get; set; }
+        public CategoryModel() 
+        { 
+            Products = new List<ProductModel>();
+        }
     }
 
 }

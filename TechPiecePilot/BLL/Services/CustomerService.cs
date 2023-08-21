@@ -80,5 +80,33 @@ namespace BLL.Services
             var mapped = mapper.Map<bool>(data);
             return mapped;
         }
+
+
+        public static CustomerFeedbackDTO CustomerFeedbacks(string username)
+        {
+            var data = DataAccessLayer.CustomerData().Read(username);
+            var cfg = new MapperConfiguration(c =>
+            {
+                c.CreateMap<Customer, CustomerFeedbackDTO>();
+                c.CreateMap<FeedbackModel, FeedbackDTO>();
+            });
+            var mapper = new Mapper(cfg);
+            var mapped = mapper.Map<CustomerFeedbackDTO>(data);
+            return mapped;
+        }
+
+        public static bool FeedbackDelete(string username)
+        {
+            var data = DataAccessLayer.CustomerData().Delete(username);
+            var cfg = new MapperConfiguration(c =>
+            {
+                c.CreateMap<Customer, CustomerFeedbackDTO>();
+                c.CreateMap<FeedbackModel, FeedbackDTO>();
+            });
+            var mapper = new Mapper(cfg);
+            var mapped = mapper.Map<bool>(data);
+            return mapped;
+        }
+
     }
 }

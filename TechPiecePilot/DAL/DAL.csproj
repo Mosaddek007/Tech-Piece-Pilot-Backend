@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202308201847242_newdb2.designer.cs">
       <DependentUpon>202308201847242_newdb2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308211224170_relationship.cs" />
+    <Compile Include="Migrations\202308211224170_relationship.designer.cs">
+      <DependentUpon>202308211224170_relationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="Repos\AdminRepos\ProductRepo.cs" />
     <Compile Include="Repos\CustomerRepos\CartRepo.cs" />
     <Compile Include="Repos\CustomerRepos\CustomerRepo.cs" />
+    <Compile Include="Repos\CustomerRepos\FeedbackRepo.cs" />
     <Compile Include="Repos\CustomerRepos\WishlistRepo.cs" />
     <Compile Include="Repos\Repos.cs" />
     <Compile Include="Repos\TokenRepo.cs" />
@@ -89,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202308201847242_newdb2.resx">
       <DependentUpon>202308201847242_newdb2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308211224170_relationship.resx">
+      <DependentUpon>202308211224170_relationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
