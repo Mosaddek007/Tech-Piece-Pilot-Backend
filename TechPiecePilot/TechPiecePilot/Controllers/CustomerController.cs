@@ -48,7 +48,7 @@ namespace TechPiecePilot.Controllers
             }
         }
 
-        [Logged]
+       // [Logged]
         [HttpGet]
         [Route("api/customers/{username}")]
         public HttpResponseMessage Customers(string username)
@@ -120,6 +120,21 @@ namespace TechPiecePilot.Controllers
             // try
             //{
             var data = CartServices.UpdateCart(obj);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+            // }
+            // (Exception ex)
+            //
+            //   return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Massage = ex.Message });
+            //}
+        }
+        // Customer can See cart
+        [HttpGet]
+        [Route("api/Customer/cartlist/{username}")]
+        public HttpResponseMessage getCartByUserName(string username)
+        {
+            // try
+            //{
+            var data = CartServices.GetCartByUserName(username);
             return Request.CreateResponse(HttpStatusCode.OK, data);
             // }
             // (Exception ex)

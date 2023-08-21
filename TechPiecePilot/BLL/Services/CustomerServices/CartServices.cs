@@ -101,5 +101,31 @@ namespace BLL.Services.CustomerServices
             }
             return returndata;
         }
+
+        public static List<CartDTO> GetCartByUserName(string username)
+        {
+            var data = DAL.DataAccessLayer.CartData().Read();
+            var CartdataOfUser = data.Where(e=>e.Username == username && e.Status == "Pending").ToList();
+            var returndata = new List<CartDTO>();
+            foreach (var item in CartdataOfUser)
+            {
+                var data1 = new CartDTO()
+                {
+                    CartID = item.CartID,
+                    Status = item.Status,
+                    ProductID = item.ProductID,
+                    Username = item.Username,
+                    Quantity = item.Quantity,
+                    Price = item.Price
+                };
+                returndata.Add(data1);
+
+            }
+            return returndata;
+        }
+
+
+
+
     }
 }

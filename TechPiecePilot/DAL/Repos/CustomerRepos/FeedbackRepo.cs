@@ -36,7 +36,10 @@ namespace DAL.Repos.CustomerRepos
 
         public FeedbackModel Update(FeedbackModel obj)
         {
-            throw new NotImplementedException();
+            var ex = Read(obj.FeedbackID);
+            db.Entry(ex).CurrentValues.SetValues(obj);
+            if(db.SaveChanges()>0)return obj;
+            else return null;
         }
 
         public FeedbackModel CustomerFeeedback(string username)

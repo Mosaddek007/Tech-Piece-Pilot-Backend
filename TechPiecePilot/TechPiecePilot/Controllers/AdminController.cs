@@ -94,12 +94,12 @@ namespace TechPiecePilot.Controllers
         }
         //admin can Update Feedback on ReplyFromAdmin       
         [HttpPost]
-        [Route("api/Admins/{Username}/UpdateFeedbacks")]
-        public HttpResponseMessage UpdateFeedback(FeedbackDTO username)
+        [Route("api/Admins/UpdateFeedbacks/{obj}")]
+        public HttpResponseMessage UpdateFeedback(FeedbackDTO obj)
         {
             try
             {
-            var data = FeedbackService.Update(username);
+            var data = FeedbackService.Update(obj);
             return Request.CreateResponse(HttpStatusCode.OK, data);
             }
             catch (Exception ex) 

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newdb2 : DbMigration
+    public partial class dbdb : DbMigration
     {
         public override void Up()
         {
@@ -141,8 +141,8 @@
             DropForeignKey("dbo.Tokens", "Username", "dbo.Users");
             DropForeignKey("dbo.ReqProductModels", "Username", "dbo.Customers");
             DropForeignKey("dbo.ReqProductModels", "CategoryID", "dbo.CategoryModels");
-            DropForeignKey("dbo.FeedbackModels", "Username", "dbo.Customers");
             DropForeignKey("dbo.CartModels", "Username", "dbo.Customers");
+            DropForeignKey("dbo.FeedbackModels", "Username", "dbo.Customers");
             DropForeignKey("dbo.CartModels", "ProductID", "dbo.ProductModels");
             DropForeignKey("dbo.ProductModels", "CategoryID", "dbo.CategoryModels");
             DropIndex("dbo.WishlistModels", new[] { "ProductID" });

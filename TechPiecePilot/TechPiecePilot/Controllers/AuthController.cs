@@ -35,7 +35,7 @@ namespace MollaFuelCarService.Controllers
             }
         }
 
-        [Logged]
+       // [Logged]
         [HttpPost]
         [Route("api/logout")]
         public HttpResponseMessage Logout()
