@@ -67,7 +67,7 @@ namespace TechPiecePilot.Controllers
 
         //Update Customer
         [HttpPost]
-        [Route("api/customers/{username}/update")]
+        [Route("api/customers/update/{username}")]
         public HttpResponseMessage CustomersUpdate(CustomerDTO username)
         {
             try
